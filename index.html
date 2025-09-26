@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmalife: Propuesta de Transformación Digital y Rebranding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores de Farmalife (según tu descripción) */
+        :root {
+            --morado-farmalife: #6A1B9A;
+            --verde-farmalife: #4CAF50;
+            --blanco-farmalife: #FFFFFF;
+            --gris-neutro: #EEEEEE;
+            --gris-oscuro: #333333;
+        }
+
+        /* Estilos Generales y Responsivos */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--morado-farmalife);
+            color: var(--blanco-farmalife);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+        .presentation-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: var(--morado-farmalife);
+            transition: opacity 0.8s ease-in-out;
+            opacity: 0;
+            text-align: center;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        /* Contenedores de Texto para la "cartilla" con scroll */
+        .content-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px 40px;
+            border-radius: 10px;
+            max-width: 900px;
+            max-height: 70vh;
+            overflow-y: auto;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--verde-farmalife);
+            margin: 10px;
+            color: var(--blanco-farmalife);
+        }
+
+        /* Estilo de Tipografía */
+        h1, h2, h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--verde-farmalife);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-top: 0;
+        }
+        h2 { font-size: 2em; margin-top: 20px; }
+        h3 { font-size: 1.5em; color: var(--blanco-farmalife); }
+        p, li { font-size: 1.1em; color: var(--blanco-farmalife); }
+        ul { list-style-type: none; padding-left: 0; }
+        ul li::before {
+            content: "•";
+            color: var(--verde-farmalife);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        strong {
+            color: var(--blanco-farmalife);
+        }
+
+        /* Estilos de tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid var(--verde-farmalife);
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--verde-farmalife);
+            color: var(--negro-carbon);
+        }
+        td {
+            background-color: var(--morado-farmalife);
+            color: var(--blanco-farmalife);
+        }
+
+        /* Logo en la portada - Adaptado para Farmalife */
+        .logo-wrapper {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            display: inline-block;
+            border: 1px solid var(--verde-farmalife);
+        }
+        .logo-portada {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            color: var(--morado-farmalife);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        .logo-cross {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background-color: var(--verde-farmalife);
+            position: relative;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .logo-cross::before, .logo-cross::after {
+            content: '';
+            position: absolute;
+            background-color: var(--blanco-farmalife);
+            border-radius: 5px;
+        }
+        .logo-cross::before {
+            width: 60%;
+            height: 20%;
+            top: 40%;
+            left: 20%;
+        }
+        .logo-cross::after {
+            width: 20%;
+            height: 60%;
+            top: 20%;
+            left: 40%;
+        }
+
+        /* Navegación */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+        .nav-button {
+            background-color: var(--verde-farmalife);
+            color: var(--blanco-farmalife);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #388E3C;
+        }
+
+        /* POPUP (LIGHTBOX) */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .popup-img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .popup-close {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+            text-shadow: 0 0 5px black;
+        }
+
+
+        /* Media Queries para diseño responsive */
+        @media screen and (max-width: 768px) {
+            .slide {
+                justify-content: flex-start;
+                padding-top: 5vh;
+            }
+            .content-box {
+                padding: 20px;
+                max-width: 95%;
+                margin-top: 20px;
+                max-height: 60vh;
+                margin-bottom: 60px;
+            }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            p, li { font-size: 1em; }
+            .nav-button {
+                padding: 8px 16px;
+                font-size: 1.2em;
+            }
+            .logo-wrapper {
+                padding: 20px;
+            }
+            .logo-text {
+                font-size: 2em;
+            }
+            .logo-cross {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        
+        <div class="slide active">
+            <div class="logo-wrapper">
+                <div class="logo-cross"></div>
+                <span class="logo-text">Farmalife</span>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="content-box">
+                <h2>1. Contexto y objetivo</h2>
+                <p>Farmalife es una cadena de farmacias argentina con fuerte presencia en Corrientes y varias provincias. Su sitio actual (farmalife.com.ar) presenta un catálogo variado con secciones de fragancias, maquillaje, dermocosmética, cuidado personal, maternidad, salud y farmacia, hogar y alimentos y ofertasfarmalife.com.ar. También incluye servicios institucionales, métodos de pago y un recetario onlinefarmalife.com.ar. Este mix de farmacia y productos de cuidado diario demuestra que la marca busca ser una referencia cotidiana en salud y belleza.</p>
+                <p>En la actualidad, el ecommerce de Farmalife funciona sobre VTEX, un software como servicio enfocado en omnicanalidad. El reto es evolucionar a una plataforma más flexible y a medida, que permita integrar profundamente sistemas de recetas, stock por sucursal y nuevos servicios digitales. Por ello se propone migrar el canal online a Adobe Commerce (Magento Enterprise), realizar un rebranding completo y potenciar el ecosistema digital de Farmalife con funcionalidades innovadoras.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>2. Por qué elegir Adobe Commerce (Magento) en lugar de VTEX</h2>
+                <h3>Personalización y control</h3>
+                <ul>
+                    <li><strong>Flexibilidad y personalización total.</strong> Adobe Commerce está basado en Magento, una plataforma de código abierto cuya estructura permite a las empresas crear experiencias de compra únicas. Según un análisis comparativo, Magento ofrece una estructura abierta que brinda a las empresas la posibilidad de crear una experiencia de compra totalmente personalizadadeploi.ca; esta flexibilidad exige un equipo de desarrollo cualificado, pero permite adaptar cada proceso a las necesidades del negocio.</li>
+                    <li><strong>Rico conjunto de funciones.</strong> Magento incluye herramientas SEO avanzadas, capacidad multi‑tienda e integraciones con miles de extensionesdeploi.ca, lo que facilita añadir nuevas funcionalidades como suscripciones, módulos de recetas o validación de identidad.</li>
+                    <li><strong>Escalabilidad.</strong> La plataforma está diseñada para crecer con la empresa; puede manejar múltiples tiendas y catálogos extensosdeploi.ca. Esto es clave para una cadena que planea expandir su ecommerce a más sucursales y categorías de productos.</li>
+                    <li><strong>Control de costos.</strong> A diferencia de la modalidad de suscripción de VTEX, en la que se paga un fee mensual y comisiones por transacción, Adobe Commerce permite elegir un modelo de licenciamiento y controlar servidores y costos de desarrollo. Aunque la licencia de Adobe Commerce tiene un coste y se requiere inversión en desarrollodeploi.ca, a largo plazo ofrece mayor previsibilidad y evita comisiones variables.</li>
+                    <li><strong>Integración profunda con sistemas internos.</strong> La arquitectura abierta y la extensa comunidad de desarrolladores permiten conectar la plataforma con ERPs, sistemas de inventario, software de farmacia o servicios de verificación de identidad sin las limitaciones que imponen algunas soluciones SaaS.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>Comparación con VTEX</h2>
+                <p>VTEX es una plataforma SaaS con un enfoque de “comercio unificado”. Ofrece despliegue rápido y nativa integración con marketplacedeploi.ca, y su arquitectura de microservicios permite agilidad en actualizacionesdeploi.ca. Sin embargo, su flexibilidad es limitada en comparación con Magento: VTEX brinda capacidades robustas, pero con menos opciones de personalización y con funciones ya definidasdeploi.ca. Para proyectos que requieren integrar servicios farmacéuticos complejos (subida de recetas, suscripciones de medicamentos, validación de identidad), Magento ofrece mayor capacidad de adaptación.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>3. Funcionalidades claves propuestas para Farmalife</h2>
+                <h3>Integración de catálogo y stock</h3>
+                <p>Catálogo unificado y stock en tiempo real. Conectaremos el ERP y los sistemas de stock de cada sucursal al ecommerce, de modo que los clientes puedan ver la disponibilidad de productos en su localidad. Las categorías actuales (fragancias, maquillaje, dermocosmética, cuidado personal, maternidad, salud y farmacia, hogar y alimentos y ofertas) se mantendrán y se integrarán en una experiencia coherentefarmalife.com.ar.</p>
+                <h3>Servicios farmacéuticos digitales</h3>
+                <ul>
+                    <li><strong>Carga y validación de recetas online.</strong> Los clientes podrán subir la foto de su receta o prescripción electrónica. El sistema verificará la autenticidad, controlará la cantidad de medicamentos y permitirá retirar en tienda o recibir a domicilio.</li>
+                    <li><strong>Validación de identidad y cumplimiento normativo.</strong> Mediante integración con servicios de verificación y bases de datos de obras sociales, se garantizará que solo usuarios habilitados accedan a medicamentos con receta.</li>
+                    <li><strong>Suscripciones para tratamientos crónicos.</strong> Los pacientes podrán suscribirse a entregas periódicas de medicamentos recurrentes. Esto facilita la adherencia al tratamiento y asegura ingresos recurrentes para Farmalife.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>Experiencia de compra omnicanal</h2>
+                <ul>
+                    <li><strong>Click & Collect mejorado.</strong> La plataforma permitirá reservar productos online y retirarlos en tienda sin hacer fila. El cliente sabrá exactamente en qué sucursal hay stock y cuándo puede retirar su pedido. Las sucursales seguirán siendo un punto de contacto clave.</li>
+                    <li><strong>Envío a domicilio con trazabilidad.</strong> Los pedidos se podrán recibir en casa con seguimiento en tiempo real. Se integrarán opciones de envío urgente o programado.</li>
+                    <li><strong>Asistencia por WhatsApp con agentes de IA.</strong> Para clientes mayores o quienes prefieren atención personalizada, se ofrecerá un canal de chat con agentes automáticos entrenados en terminología farmacéutica que podrán responder dudas, gestionar pedidos y ofrecer seguimiento de tratamientos.</li>
+                    <li><strong>Interfaz intuitiva y accesible.</strong> El rebranding adoptará un diseño limpio y accesible, con navegación fácil y embudos de compra optimizados para diferentes perfiles (adultos mayores, jóvenes, madres). Se mantendrá la estética actual orientada al bienestar y la belleza, como muestran las categorías del sitiofarmalife.com.ar, pero con un toque más moderno y coherente.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>Sistema de pagos y financiación</h2>
+                <ul>
+                    <li><strong>Opciones de pago tradicionales.</strong> Tarjetas de crédito/débito, Mercado Pago y transferencias bancarias se mantendrán disponibles.</li>
+                    <li><strong>Financiación interna y créditos Farmalife.</strong> Inspirándose en el caso de Starbucks, se propone un programa de crédito interno: los clientes cargarán saldo en su “Cuenta Farmalife” para obtener descuentos y beneficios. La experiencia de Starbucks demuestra que este tipo de programa puede generar un “float” de capital: en 2025 la empresa reportó más de US$ 1,8 mil millones en depósitos de clientes en su app y tarjetasmedium.com, una cifra que Starbucks utiliza como un préstamo sin interésmarginalrevolution.com. Esta estrategia les permite ganar intereses y aumentar la fidelidad.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>Para Farmalife, esto se traduciría en:</h2>
+                <ul>
+                    <li><strong>Carga de saldo vía transferencia o tarjeta.</strong> Los clientes podrían transferir fondos a su cuenta Farmalife. Se ofrecerían bonificaciones (p. ej., 5 % extra) si el dinero se mantiene un periodo mínimo antes de gastarlo.</li>
+                    <li><strong>Descuentos exclusivos al pagar con crédito interno.</strong> Se incentivarían compras con saldo prepagado mediante descuentos o envío gratuito.</li>
+                    <li><strong>Financiación para la empresa.</strong> Al igual que Starbucks, Farmalife tendría acceso a capital de trabajo sin recurrir a préstamos bancarios; un porcentaje del saldo no usado (“breakage”) generaría ingresos adicionalesmarginalrevolution.com.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>4. Rebranding y posicionamiento</h2>
+                <p>El rebranding buscará consolidar a Farmalife como líder digital en salud, cuidado y belleza. Se propondrán los siguientes lineamientos:</p>
+                <ul>
+                    <li><strong>Identidad visual fresca y coherente.</strong> Colores relacionados con salud y bienestar, iconografía clara y fotografías que reflejen el uso cotidiano de los productos (cosmética, dermocosmética y medicamentos). El logo actual se adaptará para transmitir modernidad sin perder reconocimiento.</li>
+                    <li><strong>Comunicación centrada en el usuario.</strong> Mensajes que hablen de cómo Farmalife acompaña la rutina diaria: cuidado de la piel, maquillaje, bienestar, maternidad y salud, tal como se ve en el menú del sitiofarmalife.com.ar. Se usarán testimonios de usuarios y contenidos educativos (blogs y redes sociales) sobre hábitos saludables.</li>
+                    <li><strong>Sección “Recetario” mejorada.</strong> Además de permitir la carga de recetas, este apartado ofrecerá contenido sobre patologías comunes, recordatorios de toma de medicación y recomendaciones personalizadas.</li>
+                    <li><strong>Marketing 360 °.</strong> Campañas en redes, email y WhatsApp basadas en el historial de compras y la segmentación demográfica. La integración con Adobe Experience Cloud permitirá automatizar y personalizar la comunicación.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>5. Ventajas estratégicas</h2>
+                <ul>
+                    <li><strong>Fidelización y nuevas vías de ingresos.</strong> El programa de suscripciones y el crédito interno promueven la recurrencia y generan ingresos anticipados. El ejemplo de Starbucks demuestra que los saldos prepagados pueden equivaler a depósitos bancarios y generar interesesmedium.commarginalrevolution.com.</li>
+                    <li><strong>Optimización logística y stock.</strong> Integrar stock en tiempo real permitirá mejorar la rotación y reducir faltantes. La gestión de recetas y suscripciones optimizará el inventario de medicamentos crónicos.</li>
+                    <li><strong>Experiencia omnicanal completa.</strong> Al unir tienda online y física, la marca se fortalecerá como referente regional en salud y cosmética.</li>
+                    <li><strong>Escalabilidad.</strong> Adobe Commerce ofrece una base robusta para crecer y sumar sucursales o nuevas líneas de negociodeploi.ca.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>6. Próximos pasos propuestos</h2>
+                <ul>
+                    <li><strong>Kick‑off del proyecto.</strong> Definición de alcance técnico y creativo. Análisis de requisitos legales para la venta de medicamentos online y validación de recetas.</li>
+                    <li><strong>Arquitectura y migración.</strong> Instalación de Adobe Commerce, diseño del esquema de datos y migración del catálogo actual (productos, clientes, suscripciones). Integración con ERP y sistemas de inventario.</li>
+                    <li><strong>Desarrollo de funcionalidades.</strong> Implementación de módulos de recetas, suscripciones, validación de identidad, créditos internos y medios de pago. Configuración de notificaciones por WhatsApp.</li>
+                    <li><strong>Diseño UI/UX y rebranding.</strong> Crear la nueva identidad visual y maquetar la interfaz adaptable a desktop y mobile. Pruebas de usabilidad con usuarios de diferentes edades.</li>
+                    <li><strong>Lanzamiento y difusión.</strong> Activar una campaña de comunicación para presentar el nuevo ecommerce y el programa de créditos internos. Promociones de lanzamiento y webinars educativos.</li>
+                </ul>
+                <p>Esta propuesta busca transformar el ecommerce de Farmalife en una plataforma centrada en el usuario, capaz de integrar servicios farmacéuticos avanzados y al mismo tiempo ofrecer una experiencia atractiva en productos de belleza y cuidado personal. La migración a Adobe Commerce, combinada con un rebranding moderno y un sistema de créditos internos inspirado en el éxito de Starbucksmedium.commarginalrevolution.com, posicionará a Farmalife como referente digital en el mercado argentino.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn">←</button>
+        <button class="nav-button" id="nextBtn">→</button>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <span class="popup-close">&times;</span>
+        <div class="popup-content">
+            <img src="" alt="Imagen ampliada" class="popup-img" id="popupImage">
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupImage = document.getElementById('popupImage');
+            const popupClose = document.querySelector('.popup-close');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                });
+                slides[index].classList.add('active');
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextBtn.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                }
+            });
+
+            // Lógica del pop-up para las imágenes
+            document.querySelectorAll('.logo-portada').forEach(img => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    popupImage.src = e.target.src;
+                    popupOverlay.style.display = 'flex';
+                });
+            });
+
+            popupClose.addEventListener('click', () => {
+                popupOverlay.style.display = 'none';
+            });
+
+            popupOverlay.addEventListener('click', (e) => {
+                if (e.target === popupOverlay) {
+                    popupOverlay.style.display = 'none';
+                }
+            });
+
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>
