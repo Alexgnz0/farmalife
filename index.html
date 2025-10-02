@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmalife: Propuesta de Transformación Digital y Rebranding.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
     <style>
         /* Paleta de Colores de Farmalife (según tu descripción) */
         :root {
@@ -30,11 +33,13 @@
             overflow: hidden;
             line-height: 1.6;
         }
+
         .presentation-container {
             width: 100%;
             height: 100%;
             position: relative;
         }
+
         .slide {
             width: 100%;
             height: 100%;
@@ -49,11 +54,12 @@
             opacity: 0;
             text-align: center;
         }
+
         .slide.active {
             display: flex;
             opacity: 1;
         }
-        
+
         /* Contenedores de Texto para la "cartilla" con scroll */
         .content-box {
             background-color: rgba(0, 0, 0, 0.5);
@@ -70,24 +76,45 @@
         }
 
         /* Estilo de Tipografía */
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Cinzel Decorative', serif;
             color: var(--verde-farmalife);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             margin-top: 0;
         }
-        h2 { font-size: 2em; margin-top: 20px; }
-        h3 { font-size: 1.5em; color: var(--blanco-farmalife); }
-        p, li { font-size: 1.1em; color: var(--blanco-farmalife); }
-        ul { list-style-type: none; padding-left: 0; }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--blanco-farmalife);
+        }
+
+        p,
+        li {
+            font-size: 1.1em;
+            color: var(--blanco-farmalife);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
         ul li::before {
             content: "•";
             color: var(--verde-farmalife);
             font-weight: bold;
-            display: inline-block; 
+            display: inline-block;
             width: 1em;
             margin-left: -1em;
         }
+
         strong {
             color: var(--blanco-farmalife);
         }
@@ -98,15 +125,19 @@
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid var(--verde-farmalife);
             padding: 10px;
             text-align: left;
         }
+
         th {
             background-color: var(--verde-farmalife);
             color: var(--negro-carbon);
         }
+
         td {
             background-color: var(--morado-farmalife);
             color: var(--blanco-farmalife);
@@ -120,12 +151,14 @@
             display: inline-block;
             border: 1px solid var(--verde-farmalife);
         }
+
         .logo-portada {
             max-width: 500px;
             width: 100%;
             height: auto;
             cursor: pointer;
         }
+
         .logo-text {
             font-family: 'Montserrat', sans-serif;
             font-size: 3em;
@@ -134,6 +167,7 @@
             margin-top: 10px;
             display: block;
         }
+
         .logo-cross {
             display: inline-block;
             width: 80px;
@@ -143,18 +177,22 @@
             border-radius: 50%;
             margin-bottom: 10px;
         }
-        .logo-cross::before, .logo-cross::after {
+
+        .logo-cross::before,
+        .logo-cross::after {
             content: '';
             position: absolute;
             background-color: var(--blanco-farmalife);
             border-radius: 5px;
         }
+
         .logo-cross::before {
             width: 60%;
             height: 20%;
             top: 40%;
             left: 20%;
         }
+
         .logo-cross::after {
             width: 20%;
             height: 60%;
@@ -171,6 +209,7 @@
             display: flex;
             gap: 15px;
         }
+
         .nav-button {
             background-color: var(--verde-farmalife);
             color: var(--blanco-farmalife);
@@ -181,6 +220,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .nav-button:hover {
             background-color: #388E3C;
         }
@@ -199,10 +239,12 @@
             align-items: center;
             overflow-y: auto;
         }
+
         .popup-content {
             padding: 20px;
             text-align: center;
         }
+
         .popup-img {
             max-width: 90%;
             height: auto;
@@ -210,6 +252,7 @@
             margin: 0 auto;
             border-radius: 5px;
         }
+
         .popup-close {
             position: fixed;
             top: 10px;
@@ -227,6 +270,7 @@
                 justify-content: flex-start;
                 padding-top: 5vh;
             }
+
             .content-box {
                 padding: 20px;
                 max-width: 95%;
@@ -234,19 +278,33 @@
                 max-height: 60vh;
                 margin-bottom: 60px;
             }
-            h2 { font-size: 1.5em; }
-            h3 { font-size: 1.2em; }
-            p, li { font-size: 1em; }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            p,
+            li {
+                font-size: 1em;
+            }
+
             .nav-button {
                 padding: 8px 16px;
                 font-size: 1.2em;
             }
+
             .logo-wrapper {
                 padding: 20px;
             }
+
             .logo-text {
                 font-size: 2em;
             }
+
             .logo-cross {
                 width: 60px;
                 height: 60px;
@@ -254,22 +312,32 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="presentation-container">
-        
+
         <div class="slide active">
             <div class="logo-wrapper">
                 <div class="logo-cross"></div>
                 <span class="logo-text">Farmalife</span>
             </div>
         </div>
-        
+
         <div class="slide">
             <div class="content-box">
                 <h2>1. Contexto y objetivo</h2>
-                <p>Farmalife es una cadena de farmacias argentina con fuerte presencia en Corrientes y varias provincias. Su sitio actual (farmalife.com.ar) presenta un catálogo variado con secciones de fragancias, maquillaje, dermocosmética, cuidado personal, maternidad, salud y farmacia, hogar y alimentos y ofertasfarmalife.com.ar. También incluye servicios institucionales, métodos de pago y un recetario onlinefarmalife.com.ar. Este mix de farmacia y productos de cuidado diario demuestra que la marca busca ser una referencia cotidiana en salud y belleza.</p>
-                <p>En la actualidad, el ecommerce de Farmalife funciona sobre VTEX, un software como servicio enfocado en omnicanalidad. El reto es evolucionar a una plataforma más flexible y a medida, que permita integrar profundamente sistemas de recetas, stock por sucursal y nuevos servicios digitales. Por ello se propone migrar el canal online a Adobe Commerce (Magento Enterprise), realizar un rebranding completo y potenciar el ecosistema digital de Farmalife con funcionalidades innovadoras.</p>
+                <p>Farmalife es una cadena de farmacias argentina con fuerte presencia en Corrientes y varias
+                    provincias. Su sitio actual (farmalife.com.ar) presenta un catálogo variado con secciones de
+                    fragancias, maquillaje, dermocosmética, cuidado personal, maternidad, salud y farmacia, hogar y
+                    alimentos y ofertasfarmalife.com.ar. También incluye servicios institucionales, métodos de pago y un
+                    recetario onlinefarmalife.com.ar. Este mix de farmacia y productos de cuidado diario demuestra que
+                    la marca busca ser una referencia cotidiana en salud y belleza.</p>
+                <p>En la actualidad, el ecommerce de Farmalife funciona sobre VTEX, un software como servicio enfocado
+                    en omnicanalidad. El reto es evolucionar a una plataforma más flexible y a medida, que permita
+                    integrar profundamente sistemas de recetas, stock por sucursal y nuevos servicios digitales. Por
+                    ello se propone migrar el canal online a Adobe Commerce (Magento Enterprise), realizar un rebranding
+                    completo y potenciar el ecosistema digital de Farmalife con funcionalidades innovadoras.</p>
             </div>
         </div>
 
@@ -278,11 +346,27 @@
                 <h2>2. Por qué elegir Adobe Commerce (Magento) en lugar de VTEX</h2>
                 <h3>Personalización y control</h3>
                 <ul>
-                    <li><strong>Flexibilidad y personalización total.</strong> Adobe Commerce está basado en Magento, una plataforma de código abierto cuya estructura permite a las empresas crear experiencias de compra únicas. Según un análisis comparativo, Magento ofrece una estructura abierta que brinda a las empresas la posibilidad de crear una experiencia de compra totalmente personalizada; esta flexibilidad exige un equipo de desarrollo cualificado, pero permite adaptar cada proceso a las necesidades del negocio.</li>
-                    <li><strong>Rico conjunto de funciones.</strong> Magento incluye herramientas SEO avanzadas, capacidad multi‑tienda e integraciones con miles de extensiones, lo que facilita añadir nuevas funcionalidades como suscripciones, módulos de recetas o validación de identidad.</li>
-                    <li><strong>Escalabilidad.</strong> La plataforma está diseñada para crecer con la empresa; puede manejar múltiples tiendas y catálogos extensos. Esto es clave para una cadena que planea expandir su ecommerce a más sucursales y categorías de productos.</li>
-                    <li><strong>Control de costos.</strong> A diferencia de la modalidad de suscripción de VTEX, en la que se paga un fee mensual y comisiones por transacción, Adobe Commerce permite elegir un modelo de licenciamiento y controlar servidores y costos de desarrollo. Aunque la licencia de Adobe Commerce tiene un coste y se requiere inversión en desarrollo, a largo plazo ofrece mayor previsibilidad y evita comisiones variables.</li>
-                    <li><strong>Integración profunda con sistemas internos.</strong> La arquitectura abierta y la extensa comunidad de desarrolladores permiten conectar la plataforma con ERPs, sistemas de inventario, software de farmacia o servicios de verificación de identidad sin las limitaciones que imponen algunas soluciones SaaS.</li>
+                    <li><strong>Flexibilidad y personalización total.</strong> Adobe Commerce está basado en Magento,
+                        una plataforma de código abierto cuya estructura permite a las empresas crear experiencias de
+                        compra únicas. Según un análisis comparativo, Magento ofrece una estructura abierta que brinda a
+                        las empresas la posibilidad de crear una experiencia de compra totalmente personalizada; esta
+                        flexibilidad exige un equipo de desarrollo cualificado, pero permite adaptar cada proceso a las
+                        necesidades del negocio.</li>
+                    <li><strong>Rico conjunto de funciones.</strong> Magento incluye herramientas SEO avanzadas,
+                        capacidad multi‑tienda e integraciones con miles de extensiones, lo que facilita añadir nuevas
+                        funcionalidades como suscripciones, módulos de recetas o validación de identidad.</li>
+                    <li><strong>Escalabilidad.</strong> La plataforma está diseñada para crecer con la empresa; puede
+                        manejar múltiples tiendas y catálogos extensos. Esto es clave para una cadena que planea
+                        expandir su ecommerce a más sucursales y categorías de productos.</li>
+                    <li><strong>Control de costos.</strong> A diferencia de la modalidad de suscripción de VTEX, en la
+                        que se paga un fee mensual y comisiones por transacción, Adobe Commerce permite elegir un modelo
+                        de licenciamiento y controlar servidores y costos de desarrollo. Aunque la licencia de Adobe
+                        Commerce tiene un coste y se requiere inversión en desarrollo, a largo plazo ofrece mayor
+                        previsibilidad y evita comisiones variables.</li>
+                    <li><strong>Integración profunda con sistemas internos.</strong> La arquitectura abierta y la
+                        extensa comunidad de desarrolladores permiten conectar la plataforma con ERPs, sistemas de
+                        inventario, software de farmacia o servicios de verificación de identidad sin las limitaciones
+                        que imponen algunas soluciones SaaS.</li>
                 </ul>
             </div>
         </div>
@@ -290,7 +374,12 @@
         <div class="slide">
             <div class="content-box">
                 <h2>Comparación con VTEX</h2>
-                <p>VTEX es una plataforma SaaS con un enfoque de “comercio unificado”. Ofrece despliegue rápido y nativa integración con marketplace, y su arquitectura de microservicios permite agilidad en actualizaciones. Sin embargo, su flexibilidad es limitada en comparación con Magento: VTEX brinda capacidades robustas, pero con menos opciones de personalización y con funciones ya definidas. Para proyectos que requieren integrar servicios farmacéuticos complejos (subida de recetas, suscripciones de medicamentos, validación de identidad), Magento ofrece mayor capacidad de adaptación.</p>
+                <p>VTEX es una plataforma SaaS con un enfoque de “comercio unificado”. Ofrece despliegue rápido y nativa
+                    integración con marketplace, y su arquitectura de microservicios permite agilidad en
+                    actualizaciones. Sin embargo, su flexibilidad es limitada en comparación con Magento: VTEX brinda
+                    capacidades robustas, pero con menos opciones de personalización y con funciones ya definidas. Para
+                    proyectos que requieren integrar servicios farmacéuticos complejos (subida de recetas, suscripciones
+                    de medicamentos, validación de identidad), Magento ofrece mayor capacidad de adaptación.</p>
             </div>
         </div>
 
@@ -298,12 +387,22 @@
             <div class="content-box">
                 <h2>3. Funcionalidades claves propuestas para Farmalife</h2>
                 <h3>Integración de catálogo y stock</h3>
-                <p>Catálogo unificado y stock en tiempo real. Conectaremos el ERP y los sistemas de stock de cada sucursal al ecommerce, de modo que los clientes puedan ver la disponibilidad de productos en su localidad. Las categorías actuales (fragancias, maquillaje, dermocosmética, cuidado personal, maternidad, salud y farmacia, hogar y alimentos y ofertas) se mantendrán y se integrarán en una experiencia coherentefarmalife.com.ar.</p>
+                <p>Catálogo unificado y stock en tiempo real. Conectaremos el ERP y los sistemas de stock de cada
+                    sucursal al ecommerce, de modo que los clientes puedan ver la disponibilidad de productos en su
+                    localidad. Las categorías actuales (fragancias, maquillaje, dermocosmética, cuidado personal,
+                    maternidad, salud y farmacia, hogar y alimentos y ofertas) se mantendrán y se integrarán en una
+                    experiencia coherentefarmalife.com.ar.</p>
                 <h3>Servicios farmacéuticos digitales</h3>
                 <ul>
-                    <li><strong>Carga y validación de recetas online.</strong> Los clientes podrán subir la foto de su receta o prescripción electrónica. El sistema verificará la autenticidad, controlará la cantidad de medicamentos y permitirá retirar en tienda o recibir a domicilio.</li>
-                    <li><strong>Validación de identidad y cumplimiento normativo.</strong> Mediante integración con servicios de verificación y bases de datos de obras sociales, se garantizará que solo usuarios habilitados accedan a medicamentos con receta.</li>
-                    <li><strong>Suscripciones para tratamientos crónicos.</strong> Los pacientes podrán suscribirse a entregas periódicas de medicamentos recurrentes. Esto facilita la adherencia al tratamiento y asegura ingresos recurrentes para Farmalife.</li>
+                    <li><strong>Carga y validación de recetas online.</strong> Los clientes podrán subir la foto de su
+                        receta o prescripción electrónica. El sistema verificará la autenticidad, controlará la cantidad
+                        de medicamentos y permitirá retirar en tienda o recibir a domicilio.</li>
+                    <li><strong>Validación de identidad y cumplimiento normativo.</strong> Mediante integración con
+                        servicios de verificación y bases de datos de obras sociales, se garantizará que solo usuarios
+                        habilitados accedan a medicamentos con receta.</li>
+                    <li><strong>Suscripciones para tratamientos crónicos.</strong> Los pacientes podrán suscribirse a
+                        entregas periódicas de medicamentos recurrentes. Esto facilita la adherencia al tratamiento y
+                        asegura ingresos recurrentes para Farmalife.</li>
                 </ul>
             </div>
         </div>
@@ -312,10 +411,20 @@
             <div class="content-box">
                 <h2>Experiencia de compra omnicanal</h2>
                 <ul>
-                    <li><strong>Click & Collect mejorado.</strong> La plataforma permitirá reservar productos online y retirarlos en tienda sin hacer fila. El cliente sabrá exactamente en qué sucursal hay stock y cuándo puede retirar su pedido. Las sucursales seguirán siendo un punto de contacto clave.</li>
-                    <li><strong>Envío a domicilio con trazabilidad.</strong> Los pedidos se podrán recibir en casa con seguimiento en tiempo real. Se integrarán opciones de envío urgente o programado.</li>
-                    <li><strong>Asistencia por WhatsApp con agentes de IA.</strong> Para clientes mayores o quienes prefieren atención personalizada, se ofrecerá un canal de chat con agentes automáticos entrenados en terminología farmacéutica que podrán responder dudas, gestionar pedidos y ofrecer seguimiento de tratamientos.</li>
-                    <li><strong>Interfaz intuitiva y accesible.</strong> El rebranding adoptará un diseño limpio y accesible, con navegación fácil y embudos de compra optimizados para diferentes perfiles (adultos mayores, jóvenes, madres). Se mantendrá la estética actual orientada al bienestar y la belleza, como muestran las categorías del sitiofarmalife.com.ar, pero con un toque más moderno y coherente.</li>
+                    <li><strong>Click & Collect mejorado.</strong> La plataforma permitirá reservar productos online y
+                        retirarlos en tienda sin hacer fila. El cliente sabrá exactamente en qué sucursal hay stock y
+                        cuándo puede retirar su pedido. Las sucursales seguirán siendo un punto de contacto clave.</li>
+                    <li><strong>Envío a domicilio con trazabilidad.</strong> Los pedidos se podrán recibir en casa con
+                        seguimiento en tiempo real. Se integrarán opciones de envío urgente o programado.</li>
+                    <li><strong>Asistencia por WhatsApp con agentes de IA.</strong> Para clientes mayores o quienes
+                        prefieren atención personalizada, se ofrecerá un canal de chat con agentes automáticos
+                        entrenados en terminología farmacéutica que podrán responder dudas, gestionar pedidos y ofrecer
+                        seguimiento de tratamientos.</li>
+                    <li><strong>Interfaz intuitiva y accesible.</strong> El rebranding adoptará un diseño limpio y
+                        accesible, con navegación fácil y embudos de compra optimizados para diferentes perfiles
+                        (adultos mayores, jóvenes, madres). Se mantendrá la estética actual orientada al bienestar y la
+                        belleza, como muestran las categorías del sitiofarmalife.com.ar, pero con un toque más moderno y
+                        coherente.</li>
                 </ul>
             </div>
         </div>
@@ -324,8 +433,15 @@
             <div class="content-box">
                 <h2>Sistema de pagos y financiación</h2>
                 <ul>
-                    <li><strong>Opciones de pago tradicionales.</strong> Tarjetas de crédito/débito, Mercado Pago y transferencias bancarias se mantendrán disponibles.</li>
-                    <li><strong>Financiación interna y créditos Farmalife.</strong> Inspirándose en el caso de Starbucks, se propone un programa de crédito interno: los clientes cargarán saldo en su “Cuenta Farmalife” para obtener descuentos y beneficios. La experiencia de Starbucks demuestra que este tipo de programa puede generar un “float” de capital: en 2025 la empresa reportó más de US$ 1,8 mil millones en depósitos de clientes en su app y tarjetasmedium.com, una cifra que Starbucks utiliza como un préstamo sin interésmarginalrevolution.com. Esta estrategia les permite ganar intereses y aumentar la fidelidad.</li>
+                    <li><strong>Opciones de pago tradicionales.</strong> Tarjetas de crédito/débito, Mercado Pago y
+                        transferencias bancarias se mantendrán disponibles.</li>
+                    <li><strong>Financiación interna y créditos Farmalife.</strong> Inspirándose en el caso de
+                        Starbucks, se propone un programa de crédito interno: los clientes cargarán saldo en su “Cuenta
+                        Farmalife” para obtener descuentos y beneficios. La experiencia de Starbucks demuestra que este
+                        tipo de programa puede generar un “float” de capital: en 2025 la empresa reportó más de US$ 1,8
+                        mil millones en depósitos de clientes en su app y tarjetasmedium.com, una cifra que Starbucks
+                        utiliza como un préstamo sin interésmarginalrevolution.com. Esta estrategia les permite ganar
+                        intereses y aumentar la fidelidad.</li>
                 </ul>
             </div>
         </div>
@@ -334,9 +450,14 @@
             <div class="content-box">
                 <h2>Para Farmalife, esto se traduciría en:</h2>
                 <ul>
-                    <li><strong>Carga de saldo vía transferencia o tarjeta.</strong> Los clientes podrían transferir fondos a su cuenta Farmalife. Se ofrecerían bonificaciones (p. ej., 5 % extra) si el dinero se mantiene un periodo mínimo antes de gastarlo.</li>
-                    <li><strong>Descuentos exclusivos al pagar con crédito interno.</strong> Se incentivarían compras con saldo prepagado mediante descuentos o envío gratuito.</li>
-                    <li><strong>Financiación para la empresa.</strong> Al igual que Starbucks, Farmalife tendría acceso a capital de trabajo sin recurrir a préstamos bancarios; un porcentaje del saldo no usado (“breakage”) generaría ingresos adicionalesmarginalrevolution.com.</li>
+                    <li><strong>Carga de saldo vía transferencia o tarjeta.</strong> Los clientes podrían transferir
+                        fondos a su cuenta Farmalife. Se ofrecerían bonificaciones (p. ej., 5 % extra) si el dinero se
+                        mantiene un periodo mínimo antes de gastarlo.</li>
+                    <li><strong>Descuentos exclusivos al pagar con crédito interno.</strong> Se incentivarían compras
+                        con saldo prepagado mediante descuentos o envío gratuito.</li>
+                    <li><strong>Financiación para la empresa.</strong> Al igual que Starbucks, Farmalife tendría acceso
+                        a capital de trabajo sin recurrir a préstamos bancarios; un porcentaje del saldo no usado
+                        (“breakage”) generaría ingresos adicionalesmarginalrevolution.com.</li>
                 </ul>
             </div>
         </div>
@@ -344,12 +465,23 @@
         <div class="slide">
             <div class="content-box">
                 <h2>4. Rebranding y posicionamiento</h2>
-                <p>El rebranding buscará consolidar a Farmalife como líder digital en salud, cuidado y belleza. Se propondrán los siguientes lineamientos:</p>
+                <p>El rebranding buscará consolidar a Farmalife como líder digital en salud, cuidado y belleza. Se
+                    propondrán los siguientes lineamientos:</p>
                 <ul>
-                    <li><strong>Identidad visual fresca y coherente.</strong> Colores relacionados con salud y bienestar, iconografía clara y fotografías que reflejen el uso cotidiano de los productos (cosmética, dermocosmética y medicamentos). El logo actual se adaptará para transmitir modernidad sin perder reconocimiento.</li>
-                    <li><strong>Comunicación centrada en el usuario.</strong> Mensajes que hablen de cómo Farmalife acompaña la rutina diaria: cuidado de la piel, maquillaje, bienestar, maternidad y salud, tal como se ve en el menú del sitiofarmalife.com.ar. Se usarán testimonios de usuarios y contenidos educativos (blogs y redes sociales) sobre hábitos saludables.</li>
-                    <li><strong>Sección “Recetario” mejorada.</strong> Además de permitir la carga de recetas, este apartado ofrecerá contenido sobre patologías comunes, recordatorios de toma de medicación y recomendaciones personalizadas.</li>
-                    <li><strong>Marketing 360 °.</strong> Campañas en redes, email y WhatsApp basadas en el historial de compras y la segmentación demográfica. La integración con Adobe Experience Cloud permitirá automatizar y personalizar la comunicación.</li>
+                    <li><strong>Identidad visual fresca y coherente.</strong> Colores relacionados con salud y
+                        bienestar, iconografía clara y fotografías que reflejen el uso cotidiano de los productos
+                        (cosmética, dermocosmética y medicamentos). El logo actual se adaptará para transmitir
+                        modernidad sin perder reconocimiento.</li>
+                    <li><strong>Comunicación centrada en el usuario.</strong> Mensajes que hablen de cómo Farmalife
+                        acompaña la rutina diaria: cuidado de la piel, maquillaje, bienestar, maternidad y salud, tal
+                        como se ve en el menú del sitiofarmalife.com.ar. Se usarán testimonios de usuarios y contenidos
+                        educativos (blogs y redes sociales) sobre hábitos saludables.</li>
+                    <li><strong>Sección “Recetario” mejorada.</strong> Además de permitir la carga de recetas, este
+                        apartado ofrecerá contenido sobre patologías comunes, recordatorios de toma de medicación y
+                        recomendaciones personalizadas.</li>
+                    <li><strong>Marketing 360 °.</strong> Campañas en redes, email y WhatsApp basadas en el historial de
+                        compras y la segmentación demográfica. La integración con Adobe Experience Cloud permitirá
+                        automatizar y personalizar la comunicación.</li>
                 </ul>
             </div>
         </div>
@@ -358,10 +490,17 @@
             <div class="content-box">
                 <h2>5. Ventajas estratégicas</h2>
                 <ul>
-                    <li><strong>Fidelización y nuevas vías de ingresos.</strong> El programa de suscripciones y el crédito interno promueven la recurrencia y generan ingresos anticipados. El ejemplo de Starbucks demuestra que los saldos prepagados pueden equivaler a depósitos bancarios y generar interesesmedium.commarginalrevolution.com.</li>
-                    <li><strong>Optimización logística y stock.</strong> Integrar stock en tiempo real permitirá mejorar la rotación y reducir faltantes. La gestión de recetas y suscripciones optimizará el inventario de medicamentos crónicos.</li>
-                    <li><strong>Experiencia omnicanal completa.</strong> Al unir tienda online y física, la marca se fortalecerá como referente regional en salud y cosmética.</li>
-                    <li><strong>Escalabilidad.</strong> Adobe Commerce ofrece una base robusta para crecer y sumar sucursales o nuevas líneas de negocio.</li>
+                    <li><strong>Fidelización y nuevas vías de ingresos.</strong> El programa de suscripciones y el
+                        crédito interno promueven la recurrencia y generan ingresos anticipados. El ejemplo de Starbucks
+                        demuestra que los saldos prepagados pueden equivaler a depósitos bancarios y generar
+                        interesesmedium.commarginalrevolution.com.</li>
+                    <li><strong>Optimización logística y stock.</strong> Integrar stock en tiempo real permitirá mejorar
+                        la rotación y reducir faltantes. La gestión de recetas y suscripciones optimizará el inventario
+                        de medicamentos crónicos.</li>
+                    <li><strong>Experiencia omnicanal completa.</strong> Al unir tienda online y física, la marca se
+                        fortalecerá como referente regional en salud y cosmética.</li>
+                    <li><strong>Escalabilidad.</strong> Adobe Commerce ofrece una base robusta para crecer y sumar
+                        sucursales o nuevas líneas de negocio.</li>
                 </ul>
             </div>
         </div>
@@ -370,35 +509,103 @@
             <div class="content-box">
                 <h2>6. Próximos pasos propuestos</h2>
                 <ul>
-                    <li><strong>Kick‑off del proyecto.</strong> Definición de alcance técnico y creativo. Análisis de requisitos legales para la venta de medicamentos online y validación de recetas.</li>
-                    <li><strong>Arquitectura y migración.</strong> Instalación de Adobe Commerce, diseño del esquema de datos y migración del catálogo actual (productos, clientes, suscripciones). Integración con ERP y sistemas de inventario.</li>
-                    <li><strong>Desarrollo de funcionalidades.</strong> Implementación de módulos de recetas, suscripciones, validación de identidad, créditos internos y medios de pago. Configuración de notificaciones por WhatsApp.</li>
-                    <li><strong>Diseño UI/UX y rebranding.</strong> Crear la nueva identidad visual y maquetar la interfaz adaptable a desktop y mobile. Pruebas de usabilidad con usuarios de diferentes edades.</li>
-                    <li><strong>Lanzamiento y difusión.</strong> Activar una campaña de comunicación para presentar el nuevo ecommerce y el programa de créditos internos. Promociones de lanzamiento y webinars educativos.</li>
+                    <li><strong>Kick‑off del proyecto.</strong> Definición de alcance técnico y creativo. Análisis de
+                        requisitos legales para la venta de medicamentos online y validación de recetas.</li>
+                    <li><strong>Arquitectura y migración.</strong> Instalación de Adobe Commerce, diseño del esquema de
+                        datos y migración del catálogo actual (productos, clientes, suscripciones). Integración con ERP
+                        y sistemas de inventario.</li>
+                    <li><strong>Desarrollo de funcionalidades.</strong> Implementación de módulos de recetas,
+                        suscripciones, validación de identidad, créditos internos y medios de pago. Configuración de
+                        notificaciones por WhatsApp.</li>
+                    <li><strong>Diseño UI/UX y rebranding.</strong> Crear la nueva identidad visual y maquetar la
+                        interfaz adaptable a desktop y mobile. Pruebas de usabilidad con usuarios de diferentes edades.
+                    </li>
+                    <li><strong>Lanzamiento y difusión.</strong> Activar una campaña de comunicación para presentar el
+                        nuevo ecommerce y el programa de créditos internos. Promociones de lanzamiento y webinars
+                        educativos.</li>
                 </ul>
-                <p>Esta propuesta busca transformar el ecommerce de Farmalife en una plataforma centrada en el usuario, capaz de integrar servicios farmacéuticos avanzados y al mismo tiempo ofrecer una experiencia atractiva en productos de belleza y cuidado personal. La migración a Adobe Commerce, combinada con un rebranding moderno y un sistema de créditos internos inspirado en el éxito de Starbucksmedium.commarginalrevolution.com, posicionará a Farmalife como referente digital en el mercado argentino.</p>
+                <p>Esta propuesta busca transformar el ecommerce de Farmalife en una plataforma centrada en el usuario,
+                    capaz de integrar servicios farmacéuticos avanzados y al mismo tiempo ofrecer una experiencia
+                    atractiva en productos de belleza y cuidado personal. La migración a Adobe Commerce, combinada con
+                    un rebranding moderno y un sistema de créditos internos inspirado en el éxito de
+                    Starbucksmedium.commarginalrevolution.com, posicionará a Farmalife como referente digital en el
+                    mercado argentino.</p>
             </div>
         </div>
 
         <!-- NUEVA SLIDE CON ANÁLISIS COMPETITIVO -->
         <div class="slide">
-          <div class="content-box">
-            <h2>7. Análisis competitivo: Caso Farmar</h2>
-            <h3>Debilidades clave observadas en farmar.com.ar</h3>
-            <ul>
-              <li><strong>Catálogo limitado a productos sin receta:</strong> solo venden cosméticos, cuidado personal y dermocosmética. No permiten cargar recetas ni venden medicamentos.</li>
-              <li><strong>Sin cobertura de obras sociales:</strong> no integran descuentos, validaciones ni acreditación de recetas con prepagas u obras sociales.</li>
-              <li><strong>Entrega restringida:</strong> actualmente solo permiten <strong>retiro en sucursal</strong>. El envío a domicilio aparece como “Próximamente”, pero no está habilitado.</li>
-              <li><strong>Sin automatización por WhatsApp:</strong> cada sucursal tiene número de contacto por WhatsApp, pero no existe integración de catálogo ni proceso de compra automático en ese canal.</li>
-              <li><strong>Sin programa de fidelización:</strong> no existe ningún sistema de puntos, recompensas o beneficios acumulables por compras frecuentes.</li>
-              <li><strong>Infraestructura moderna pero pesada:</strong> el sitio utiliza Next.js y Azure Blob Storage, pero depende fuertemente de JavaScript y scripts dinámicos. Esto puede hacer que el sitio no cargue correctamente en conexiones lentas.</li>
-              <li><strong>Dependencia de sucursales físicas:</strong> aunque hay más de una (Farmar, Catedral, Vedia), los pedidos online deben ser retirados personalmente. Esto reduce el alcance nacional de la tienda.</li>
-            </ul>
-            <p>
-              Estas falencias representan una oportunidad directa para Farmalife. Un ecommerce con soporte de recetas, integración con obras sociales, entregas a domicilio, canal automatizado por WhatsApp y sistema de fidelización tendría una ventaja competitiva significativa frente a Farmar.
-            </p>
-          </div>
+            <div class="content-box">
+                <h2>7. Análisis competitivo: Caso Farmar</h2>
+                <h3>Debilidades clave observadas en farmar.com.ar</h3>
+                <ul>
+                    <li><strong>Catálogo limitado a productos sin receta:</strong> solo venden cosméticos, cuidado
+                        personal y dermocosmética. No permiten cargar recetas ni venden medicamentos.</li>
+                    <li><strong>Sin cobertura de obras sociales:</strong> no integran descuentos, validaciones ni
+                        acreditación de recetas con prepagas u obras sociales.</li>
+                    <li><strong>Entrega restringida:</strong> actualmente solo permiten <strong>retiro en
+                            sucursal</strong>. El envío a domicilio aparece como “Próximamente”, pero no está
+                        habilitado.</li>
+                    <li><strong>Sin automatización por WhatsApp:</strong> cada sucursal tiene número de contacto por
+                        WhatsApp, pero no existe integración de catálogo ni proceso de compra automático en ese canal.
+                    </li>
+                    <li><strong>Sin programa de fidelización:</strong> no existe ningún sistema de puntos, recompensas o
+                        beneficios acumulables por compras frecuentes.</li>
+                    <li><strong>Infraestructura moderna pero pesada:</strong> el sitio utiliza Next.js y Azure Blob
+                        Storage, pero depende fuertemente de JavaScript y scripts dinámicos. Esto puede hacer que el
+                        sitio no cargue correctamente en conexiones lentas.</li>
+                    <li><strong>Dependencia de sucursales físicas:</strong> aunque hay más de una (Farmar, Catedral,
+                        Vedia), los pedidos online deben ser retirados personalmente. Esto reduce el alcance nacional de
+                        la tienda.</li>
+                </ul>
+                <p>
+                    Estas falencias representan una oportunidad directa para Farmalife. Un ecommerce con soporte de
+                    recetas, integración con obras sociales, entregas a domicilio, canal automatizado por WhatsApp y
+                    sistema de fidelización tendría una ventaja competitiva significativa frente a Farmar.
+                </p>
+            </div>
         </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2>8. Análisis competitivo: Caso Farmacity</h2>
+                <h3>Fortalezas y debilidades observadas en farmacity.com</h3>
+                <ul>
+                    <li><strong>Plataforma VTEX.</strong> Farmacity migró su ecommerce a la plataforma VTEX, aumentando
+                        las transacciones en más del 35 % y las conversiones en
+                        17 %. Esto demuestra estabilidad y escalabilidad, aunque
+                        limita la personalización frente a soluciones de código abierto.</li>
+                    <li><strong>Catálogo completo y servicios de salud.</strong> Ofrece dermocosmética, belleza, cuidado
+                        personal, hogar, alimentos y una sección de salud y farmacia con medicamentos de venta libre y
+                        bajo receta.
+                        Incluye turnos online para vacunas, toma de presión y asesoramiento
+                        médico.</li>
+                    <li><strong>Integración con obras sociales.</strong> Trabajan con más de 60 obras sociales, prepagas
+                        y coseguros, y cuentan con un amplio stock de medicamentos disponible las
+                        24 horas.</li>
+                    <li><strong>Programa de fidelización “Tu Farmacity”.</strong> Es un programa de beneficios
+                        exclusivos que brinda contenidos personalizados, experiencias, promociones y
+                        descuentos. En el mostrador se pueden obtener descuentos
+                        de hasta el 40 % a través del programa.</li>
+                    <li><strong>Entrega a domicilio y retiro en sucursal.</strong> El sitio ofrece puntos de retiro y
+                        envío a domicilio, con envío gratis a partir de $ 70 000.
+                        Esto aporta flexibilidad y omnicanalidad real.</li>
+                    <li><strong>Múltiples medios de pago y promociones.</strong> Aceptan tarjetas de crédito/débito,
+                        billeteras virtuales (Mercado Pago, Ualá, MODO) y efectivo; ofrecen promociones bancarias y
+                        garantizan seguridad en las transacciones.</li>
+                    <li><strong>Debilidades:</strong> Dependencia de VTEX limita la personalización; la compra de
+                        medicamentos con receta requiere validar la receta físicamente o digitalmente en
+                        farmacia; no existe un catálogo automatizado vía
+                        WhatsApp; el sitio es pesado y complejo; muchos servicios (gabinetes de salud, validación de
+                        recetas) exigen ir a sucursal.</li>
+                </ul>
+                <p>Estas observaciones muestran que Farmacity ofrece un ecosistema omnicanal robusto y servicios de
+                    salud integrados, pero su dependencia de una plataforma SaaS y la necesidad de presencialidad para
+                    ciertas gestiones dejan espacio para innovar con mayor personalización y digitalización en
+                    Farmalife.</p>
+            </div>
+        </div>
+
 
     </div>
 
@@ -475,4 +682,5 @@
     </script>
 
 </body>
+
 </html>
